@@ -1,83 +1,224 @@
-Overview of this Research : 
-==========================
 
-Due to the ease with which information may be obtained and the exponential growth in the amount of information available on the internet, it has become more challenging to differentiate between false and genuine information. Any of these fake news websites may easily infect people due to their fabricated claims. This situation has a significant impact on the offline community in general. As a result, interest in this subject has grown. A critical study has been conducted on identifying fake news in English and other languages, save for a few in Bangla. Our research shows an experimental benchmark investigation into identifying false news on a Bengali news website since there is less work in this domain. This research analyzes 11434 fake news and true news stories in the Bengali language and evaluates the performance of machine learning and deep learning algorithms to create a benchmark for detecting Bangla fake news. This research compares the model’s performance to a variety of linguistic characteristics and word vectorizers. The best accuracy obtained for lemmatized text is 95.45% for TF-IDF with the SGD classifier and 95.10% for the count vectorizer with the MLP classifier. For stemmed text, we received the best accuracy of 94.9% for the count vectorizer with the MLP classifier and 94.83% for the TF-IDF with the MLP classifier. Among deep learning models, RNN gave the best performance with 96.55% accuracy, where the f1 score is 0.96. The pre-trained Bangla BERT model gave an F1-Score of 0.96 and showed an accuracy of 93.35%.
+# 📰 Bangla Fake News Detection
 
-Findings from our research:
-=========================
+> An end-to-end research + application project for detecting fake news in **Bangla (Bengali)** using classical ML, deep learning, and a deployable API + mobile app.
 
+---
 
-|Top Fake Word | AVG Length  | Bi gram Fake  |
-|:---------------:  |:-----------:|:-------:|
-|![Top_Fake_Word]|![AVG_Length_true_and_fake]|![Bi_gram_Fake]  |
+## 🚀 Overview
 
+This repository presents a complete pipeline for **Bangla fake news detection**, including:
 
-|   Bigram True | Word Cloud |  Data Category | 
-|:------------:|:------------:|:------------:|
-|![Bigram_True]|![wordcloud]|![ Data_Category]|
+- 📊 Dataset collection & preprocessing
+- 🧠 Model experimentation (ML + DL + BERT)
+- 📈 Benchmark evaluation
+- 🌐 Flask API for inference
+- 📱 Flutter mobile application
 
+---
 
-Download |  Most Frequent Word |  Punctuation Mark |
-|:-------------------:|:-------------:|:------------:|
-|![Download]|![Most_Frequent_Word]|![Punctuation_Mark]|
+## 📊 Dataset
 
-|top true word   |  trigram fake |  trigram true |
-|:-------------------:|:-------------:|:------------:|
-|![toptrueword]|![trigramfake]|![trigramtrue]|
+- **Total samples:** 11,434
+- Includes:
+  - Fake news
+  - Authentic news
+- Files located in: `Dataset/`
 
+### Key Files
 
+- `Fake-1K.csv`
+- `LabeledAuthentic-7K.csv`
+- `LabeledFake-1K.csv`
+- `traindata.csv`, `testdata.csv`, `totaldata.csv`
+- `bangla stopwords.txt`
 
+---
 
+## 🧠 Models & Benchmarks
 
-[Top_Fake_Word]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/Topfakeword.png
-[AVG_Length_true_and_fake]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/avglengthTrueandFake.png
-[Bi_gram_Fake]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/bigramfake.png
-[Bigram_True]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/bigramtrue.png
-[wordcloud]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/wordcloud.png
-[ Data_Category]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/datacategory.png
-[Download]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/download.png
-[Most_Frequent_Word]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/most%20frequent%20word.png
-[Punctuation_Mark]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/punctuation.png
-[toptrueword]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/toptrueword.png
-[trigramfake]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/trigramfake.png
-[trigramtrue]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/trigramtrue.png
+| Model | Accuracy | Notes |
+|------|---------|------|
+| RNN | **96.55%** | Best performing model |
+| TF-IDF + SGD | 95.45% | Strong classical baseline |
+| CountVectorizer + MLP | 95.10% | Neural baseline |
+| Stemmed CountVec + MLP | 94.9% | Preprocessed variant |
+| Bangla BERT | 93.35% | F1 Score: **0.96** |
 
+---
 
+## 🧪 Notebooks
 
+Located in `Notebooks/`
 
-The output of our Research :
-=========================
+Includes experiments for:
 
+- LSTM
+- RNN
+- TF-IDF + N-grams
+- CountVectorizer
+- Bangla BERT
 
+Example notebooks:
 
-|FND_Bigram_tryGram | FND_DL_Performance  |
-|:---------------:  |:-----------:|
-|![FND_Bigram_tryGram]|![FND_DL_Performance]
+- `03_LSTM_for_bangla_fake_news.ipynb`
+- `07_bn_fake_news_detection_using_rnn.ipynb`
+- `Bangla_Fake_News_BERT.ipynb`
+- `Bangla_Fake_News_Model_Evaluation_[TF_IDF].ipynb`
 
-|Performance of the models | Dataset distribution |
-|:---------------:  |:-----------:|
-|![FND_Performance]|![FND_Table]
+---
 
-|True News Detection in app | Fake News Detection app |
-|:---------------:  |:-----------:|
-|![FND_True_app]|![FND_Fake_app]
+## ⚙️ API (Flask)
 
+Located in `API/`
 
-[FND_Bigram_tryGram]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/FND_Bigram_tryGram.PNG
-[FND_DL_Performance]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/FND_DL_Performance.PNG
-[FND_Performance]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/FND_Performance.PNG
-[FND_Table]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/FND_Table.PNG
-[FND_True_app]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/FND_True%20app.PNG
-[FND_Fake_app]: https://github.com/hasansust32/Bangla_Feke_News_Detection/blob/master/Figures/FND_Fake%20app.PNG
+### 🔹 Features
 
+- Cleans Bangla text
+- Removes punctuation & digits
+- Uses:
+  - `tfidf_char.pkl`
+  - `model.pkl`
+- Returns prediction:
+  - `Fake News`
+  - `True News`
 
+### 🔹 Run Locally
 
+```bash
+cd API
+pip install -r requirements.txt
+python request.py
+```
 
-This is the overall outcome of our research:
-========================================================
+### 🔹 Example Request
 
+```bash
+curl -X POST http://127.0.0.1:4000 \
+  -H "Content-Type: application/json" \
+  -d '{"data":"বাংলা খবরের টেক্সট এখানে"}'
+```
 
+### 🔹 Response
 
+```json
+{
+  "result": "Fake News"
+}
+```
+
+---
+
+## 📱 Flutter Mobile App
+
+Located in: `Flutter app code/`
+
+### Features
+
+- Input Bangla news text
+- Sends request to API
+- Displays result instantly
+
+### Run App
+
+```bash
+cd "Flutter app code"
+flutter pub get
+flutter run
+```
+
+---
+
+## 🖼️ Visual Results
+
+### 🔹 Model Performance
+
+![Performance](Figures/FND_Performance.PNG)
+
+### 🔹 Deep Learning Performance
+
+![DL Performance](Figures/FND_DL_Performance.PNG)
+
+### 🔹 Word Analysis
+
+![Top Words](Figures/Topfakeword.png)
+
+### 🔹 App Screens
+
+| True News | Fake News |
+|----------|----------|
+| ![](Figures/FND_True%20app.PNG) | ![](Figures/FND_Fake%20app.PNG) |
+
+---
+
+## 🏗️ Project Structure
+
+```
+Bangla_Feke_News_Detection/
+│
+├── API/                    # Flask inference API
+├── Dataset/                # All datasets
+├── Notebooks/              # Model experiments
+├── Flutter app code/       # Mobile app
+├── Figures/                # Visual outputs
+├── Presentations/          # Slides
+├── Confusion Matrix/       # Evaluation visuals
+├── APK file of APP/        # Built mobile app
+```
+
+---
+
+## 🔄 Workflow
+
+1. Dataset collection & preprocessing
+2. Feature extraction (TF-IDF / CountVectorizer)
+3. Model training (ML + DL + BERT)
+4. Evaluation & benchmarking
+5. Model serialization
+6. API deployment
+7. Mobile app integration
+
+---
+
+## ⚠️ Limitations
+
+- Dataset size is relatively small for deep learning
+- Domain-specific bias may exist
+- Limited real-time deployment scaling
+
+---
+
+## 🔮 Future Improvements
+
+- Larger Bangla dataset
+- Transformer fine-tuning improvements
+- Better UI/UX in mobile app
+- Deploy scalable cloud API
+
+---
+
+## 📌 Citation
+
+If you use this project, please consider citing or giving credit.
+
+---
+
+## 🌐 Repository Link
+
+👉 https://github.com/hasansust32/Bangla_Feke_News_Detection
+
+---
+
+## ✨ Author
+
+**SM Mahamudul Hasan**  
+🔗 GitHub: https://github.com/hasansust32
+
+---
+
+## ⭐ If you like this project
+
+Give it a star ⭐ and share it!
 
 
 
